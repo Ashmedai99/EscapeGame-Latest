@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "Engine/TriggerVolume.h"
+#include "GameFramework/PlayerController.h"
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "OpenDoor.generated.h"
@@ -23,7 +25,32 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	float Rotation = 90.0f, i;
+	void OpenDoor(float DeltaTime);
+	void CloseDoor(float DeltaTime);
+
+private:
+
+	float InitialYaw;
+	float CurrentYaw;
+
+	UPROPERTY(EditAnywhere)
+	float TargetYaw = 90.f;
+
+	UPROPERTY(EditAnywhere)
+	ATriggerVolume* TriggerVolume;
+
+	UPROPERTY(EditAnywhere)
+	AActor* ActorThatOpens;
+
+	float DoorLastOpened = 0.f;
+
+	UPROPERTY(EditAnywhere)
+	float DoorCloseDelay = .5f;
+
+	UPROPERTY(EditAnywhere)
+		float DoorOpenSpeed = .8f;
 	
-		
+	UPROPERTY(EditAnywhere)
+		float DoorCloseSpeed = 2.f;
+	
 };
