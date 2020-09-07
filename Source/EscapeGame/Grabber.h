@@ -31,5 +31,6 @@ private:
 
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* InputComponent = nullptr;
-
+	FVector GetPlayerReach() const;
+	FVector GetPlayerWorldPos() const;
 };
