@@ -22,6 +22,7 @@ public:
 	void SetupInputComponnent();
 	void Grab();
 	void Released();
+
 	FHitResult GetFirstPlayerHit() const;
 
 protected:
@@ -29,8 +30,11 @@ protected:
 private:
 	float Reach = 250.f;
 
+	UPROPERTY()
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
+	UPROPERTY()
 	UInputComponent* InputComponent = nullptr;
+
 	FVector GetPlayerReach() const;
 	FVector GetPlayerWorldPos() const;
 };
